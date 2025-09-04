@@ -1,0 +1,5 @@
+{
+  "name": "p-calendar-core",
+  "version": "0.8.2",
+  "main": "electron.js"
+}

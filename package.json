@@ -1,0 +1,43 @@
+{
+  "name": "P-calendar",
+  "private": true,
+  "version": "0.8.2",
+  "description": "The first complete and modern Shamsi calendar for Linux.",
+  "author": "Axis-Devs",
+  "type": "module",
+  "main": "electron.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "postbuild": "cp electron.js dist/ && cp src/package.app.json dist/package.json",
+    "electron:start": "electron .",
+    "dist": "npm run build && electron-builder"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "electron": "^31.0.2",
+    "electron-builder": "^24.13.3",
+    "vite": "^5.2.0"
+  },
+  "build": {
+    "appId": "com.axisdevs.pcalendar",
+    "productName": "Pcalendar",
+    "asar": true,
+    "directories": {
+      "app": "dist",
+      "output": "release"
+    },
+    "files": [
+      "**/*"
+    ],
+    "linux": {
+      "target": "AppImage",
+      "category": "Utility",
+      "icon": "build/logo1.png"
+    }
+  }
+}
