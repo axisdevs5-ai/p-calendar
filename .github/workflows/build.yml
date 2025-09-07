@@ -2,11 +2,10 @@ name: Build Tauri App
 
 on:
   push:
-    branches: [ "main" ] # هر بار که به شاخه main پوش می‌کنید، این اجرا می‌شود
+    branches: [ "main" ]
 
 jobs:
   build:
-    # این مهم‌ترین بخش است: ما از اوبونتو ۲۲.۰۴ برای بیلد استفاده می‌کنیم
     runs-on: ubuntu-22.04
 
     steps:
@@ -24,31 +23,31 @@ jobs:
       - name: Install Linux dependencies
         run: |
           sudo apt update
-sudo apt install -y \
-  libgtk-3-dev \
-  libayatana-appindicator3-dev \
-  libwebkit2gtk-4.1-dev \
-  libjavascriptcoregtk-4.1-dev \
-  build-essential \
-  curl \
-  wget \
-  file \
-  pkg-config \
-  libssl-dev \
-  libglib2.0-dev \
-  libgtk-3-dev \
-  libgdk-pixbuf-2.0-dev \
-  libsoup-3.0-dev \
-  libpango1.0-dev \
-  libatk1.0-dev \
-  libatk-bridge2.0-dev
-
+          sudo apt install -y \
+            libgtk-3-dev \
+            libayatana-appindicator3-dev \
+            libwebkit2gtk-4.1-dev \
+            libjavascriptcoregtk-4.1-dev \
+            build-essential \
+            curl \
+            wget \
+            file \
+            pkg-config \
+            libssl-dev \
+            libglib2.0-dev \
+            libgdk-pixbuf-2.0-dev \
+            libsoup-3.0-dev \
+            libpango1.0-dev \
+            libatk1.0-dev \
+            libatk-bridge2.0-dev
 
       - name: Install frontend dependencies
         run: npm install
 
+      - name: Install Tauri CLI
+        run: cargo install tauri-cli --version "^2"
+
       - name: Build the application
-        # از --verbose برای دیدن جزئیات بیشتر در لاگ‌ها استفاده می‌کنیم
         run: npm run tauri build --verbose
 
       - name: Upload artifacts
