@@ -1,8 +1,12 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
+// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: './', // مهم برای relative path در production
+  build: {
+    rollupOptions: {
+      external: ['@tauri-apps/api']
+    }
+  }
 })
-
