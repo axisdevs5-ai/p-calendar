@@ -12,10 +12,10 @@
   "app": {
     "windows": [
       {
-        "label": "main",
+        "label": "pcalendar",
         "title": "تقویم شمسی",
-        "width": 600,
-        "height": 620,
+        "width": 800,
+        "height": 820,
         "decorations": false,
         "transparent": true,
         "resizable": false,
