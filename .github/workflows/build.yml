@@ -1,0 +1,42 @@
+name: Build Tauri App
+
+on:
+  push:
+    branches: [ "main" ] # هر بار که به شاخه main پوش می‌کنید، این اجرا می‌شود
+
+jobs:
+  build:
+    # این مهم‌ترین بخش است: ما از اوبونتو ۲۲.۰۴ برای بیلد استفاده می‌کنیم
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install Linux dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.0-dev build-essential curl wget file libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev
+
+      - name: Install frontend dependencies
+        run: npm install
+
+      - name: Build the application
+        # از --verbose برای دیدن جزئیات بیشتر در لاگ‌ها استفاده می‌کنیم
+        run: npm run tauri build --verbose
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: p-calendar-linux-build
+          path: |
+            src-tauri/target/release/bundle/appimage/*.AppImage
+            src-tauri/target/release/bundle/deb/*.deb
