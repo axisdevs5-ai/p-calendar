@@ -165,26 +165,27 @@ const defaultSettings = {
 export default function ShamsiCalendarWidget() {
   
   // --- FIX START ---
-  // State for current time, updated every second to keep the widget live.
-  const [currentTime, setCurrentTime] = useState(new Date());
+// State for current time, updated every second to keep the widget live.
+const [currentTime, setCurrentTime] = useState(new Date());
 
-  useEffect(() => {
+useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentTime(new Date());
+    setCurrentTime(new Date());
     }, 1000);
     return () => clearInterval(timer);
-  }, []);
-  
-  // All time-related variables are now derived from the `currentTime` state.
-  const now = currentTime;
-  const todayJ = useMemo(() => toJalali(now.getFullYear(), now.getMonth() + 1, now.getDate()), [now]);
-  
-  const iranTime = useMemo(() => {
-      const local = now;
-      const utc = local.getTime() + local.getTimezoneOffset() * 60000;
-      return new Date(utc + (3.5 * 60 * 60000));
-  }, [now]);
-  // --- FIX END ---
+}, []);
+
+// All time-related variables are now derived from the `currentTime` state.
+const now = currentTime;
+// این بخش هنوز هر ثانیه اجرا می‌شود و بهینه نیست.
+const todayJ = useMemo(() => toJalali(now.getFullYear(), now.getMonth() + 1, now.getDate()), [now.getDate()]); // فقط وقتی روز عوض شد، دوباره محاسبه کن
+
+const iranTime = useMemo(() => {
+    const local = now;
+    const utc = local.getTime() + local.getTimezoneOffset() * 60000;
+    return new Date(utc + (3.5 * 60 * 60000));
+}, [now]); // این هم هر ثانیه اجرا می‌شود
+// --- FIX END ---
   
   const [settings, setSettings] = useState(defaultSettings);
   const [viewJ, setViewJ] = useState({ jy: todayJ.jy, jm: todayJ.jm });
@@ -509,7 +510,7 @@ export default function ShamsiCalendarWidget() {
   }
 
   return (
-    <div className={`flex items-center justify-center min-h-screen p-4 ${lightBg ? 'light-theme' : ''} ${!lightBg && !glassTheme ? 'dark-theme' : ''} ${glassTheme ? 'glass-theme' : ''}`}>
+    <div className={`flex items-center data-tauri-drag-region justify-center min-h-screen p-4 ${lightBg ? 'light-theme' : ''} ${!lightBg && !glassTheme ? 'dark-theme' : ''} ${glassTheme ? 'glass-theme' : ''}`}>
       <style>{`
         .custom-scrollbar::-webkit-scrollbar { height: 6px; } 
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; } 
@@ -581,7 +582,7 @@ export default function ShamsiCalendarWidget() {
         </div></div>)}
        
         {/* Left Panel: Notifications */}
-        <div className={`w-full p-6 flex flex-col items-center relative md:border-r ${glassTheme ? 'border-white/20' : lightBg ? 'border-neutral-200' : 'border-neutral-800'}`}>
+        <div className={`w-full p-6 flex flex-col data-tauri-drag-region items-center relative md:border-r ${glassTheme ? 'border-white/20' : lightBg ? 'border-neutral-200' : 'border-neutral-800'}`}>
             <div className={`flex-grow flex flex-col w-full text-center ${notifications.length > 0 && showNotifications && !dnd ? 'justify-start pt-6' : 'justify-center items-center'}`}>
                 {showNotifications && !dnd && notifications.length > 0 ? (
                     <div className="w-full flex flex-col gap-2">
@@ -614,7 +615,7 @@ export default function ShamsiCalendarWidget() {
         </div>
        
         {/* Right Panel: Calendar & Info */}
-        <div className="w-full p-5 flex flex-col gap-3">
+        <div className="w-full data-tauri-drag-region p-5 flex flex-col gap-3">
            <div className="w-full text-left">
               {showWeekday && <div className={`${panelTextMuted} text-sm`} style={smallTextStyle}>{todayName}</div>}
               <div className="text-2xl font-semibold" style={titleStyle}>{todayStr}</div>
@@ -714,3 +715,4 @@ export default function ShamsiCalendarWidget() {
   );
 
 }
+
