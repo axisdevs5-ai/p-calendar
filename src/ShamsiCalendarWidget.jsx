@@ -523,7 +523,7 @@ const iranTime = useMemo(() => {
         .light-theme select option { background: #ffffff !important; color: #18181b !important; }
         .glass-theme select option { background: rgba(20, 20, 20, 0.8) !important; color: #e5e5e5 !important; }
       `}</style>
-      <div data-tauri-drag-region className={mainCardClasses} style={wrapperStyle}>
+      <div className="data-tauri-drag-region shadow-2xl" className={mainCardClasses} style={wrapperStyle}>
        
         {/* Settings Button */}
         <button aria-label="تنظیمات" className={`absolute top-4 left-4 ${panelBg} rounded-2xl p-2 shadow-lg cursor-pointer ${animationsEnabled ? 'hover:scale-105 transition-transform' : ''} z-20`} onClick={() => setSettingsOpen(!settingsOpen)}>
@@ -715,4 +715,5 @@ const iranTime = useMemo(() => {
   );
 
 }
+
 
