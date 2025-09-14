@@ -1,13 +1,15 @@
 import React from 'react';
-import ShamsiCalendarWidget from './ShamsiCalendarWidget.jsx'; // Assuming the widget file is in the same src folder
-import './index.css'; // Importing global styles
+import ShamsiCalendarWidget from './shamsi_calendar_widget';
+import './index.css';
 
 function App() {
-  // This component simply renders your Shamsi Calendar Widget.
-  // The widget itself will handle its entire layout and functionality.
+  // useEffect مربوط به drag کاملا حذف شد
+
   return (
     <div className="app-container">
-      <ShamsiCalendarWidget />
+      <div className="widget-container">
+        <ShamsiCalendarWidget />
+      </div>
     </div>
   );
 }

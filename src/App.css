@@ -1,8 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* src/index.css */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: transparent !important; /* بک‌گراند کامل حذف */
+  overflow: hidden;                    /* اسکرول حذف شد */
+}
+
+/* src/App.css */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  background: transparent !important;
+  overflow: hidden;
 }
 
 .logo {
@@ -35,8 +53,15 @@
 
 .card {
   padding: 2em;
+  background: transparent !important; /* بک‌گراند کارت شفاف */
+  box-shadow: none !important;        /* سایه حذف شد */
+  border: none !important;            /* مرز حذف شد */
 }
 
 .read-the-docs {
   color: #888;
+  background: transparent !important; /* بک‌گراند شفاف */
+  box-shadow: none !important;        /* سایه حذف شد */
+  border: none !important;            /* مرز حذف شد */
 }
+
