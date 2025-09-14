@@ -3,7 +3,7 @@
 ### 📅 Beautiful & Modern Shamsi (Jalali) Calendar for Linux Desktop
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg?style=for-the-badge)](LICENSE)
-[![Latest Release](https://img.shields.io/github/v/release/axisdevs5-ai/p-calendar?style=for-the-badge\&label=Latest%20Release)](https://github.com/axisdevs5-ai/p-calendar/releases)
+[![Latest Release](https://img.shields.io/github/v/release/axisdevs5-ai/p-calendar?style=for-the-badge\&label=Latest%20Release)]([https://github.com/axisdevs5-ai/p-calendar/releases](https://github.com/axisdevs5-ai/p-calendar/releases/tag/0.8.4))
 [![Issues](https://img.shields.io/github/issues/axisdevs5-ai/p-calendar?style=for-the-badge)](https://github.com/axisdevs5-ai/p-calendar/issues)
 [![Stars](https://img.shields.io/github/stars/axisdevs5-ai/p-calendar?style=for-the-badge)](https://github.com/axisdevs5-ai/p-calendar/stargazers)
 [![Build](https://img.shields.io/github/actions/workflow/status/axisdevs5-ai/p-calendar/build.yml?style=for-the-badge)](https://github.com/axisdevs5-ai/p-calendar/actions)
